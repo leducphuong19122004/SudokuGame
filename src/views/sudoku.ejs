@@ -1,0 +1,117 @@
+<table id="sudoku">
+	<tbody>
+		<tr>
+            <% for(let i = 1; i <= 9; i++) { %>
+			<td><input type="text" /></td>
+			<% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+		<tr>
+			<% for(let i = 1; i <= 9; i++) { %>
+                <td><input type="text" /></td>
+            <% } %>
+		</tr>
+	</tbody>
+</table>
+
+<button id="finish" onclick="getValue()"></button>
+
+<script>
+    const inputElements = document.getElementsByTagName("input");
+    
+    function getValue() {
+        let array = [];
+        for (let i = 0; i < 81; i++) {
+            array[i] = inputElements[i].value;
+        }
+        fetch('check-answer', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(array),
+        })
+        .then(data => data.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
+    
+    </script>
+
+<style>
+    /* with css reset */
+* { box-sizing: border-box; }
+table { 
+    margin: auto;
+}
+tr:first-child td {
+	border-top-color: black;
+}
+tr:nth-child(3n) td {
+	border-bottom-color: black;
+}
+td {
+	border: 1px solid lightgrey;
+	height: 40px;
+	width: 40px;
+}
+td:first-child {
+	border-left-color: black;
+}
+td:nth-child(3n) {
+	border-right-color: black;
+}
+input {
+	padding: 0;
+	text-align: center;
+	border: 0;
+	height: 40px;
+	width: 40px;
+	text-align: center;
+}
+
+input:hover {
+	background: #ffffff;
+}
+
+#finish {
+    width: 30px;
+    height: 30px;
+}
+</style>
+
