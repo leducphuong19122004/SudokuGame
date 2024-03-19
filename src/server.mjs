@@ -1,8 +1,9 @@
 import express from "express";
 import routeConfig  from "./routes/routeConfig.mjs"
+import 'dotenv/config'
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
